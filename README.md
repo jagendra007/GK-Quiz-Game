@@ -26,12 +26,10 @@ import database.csv to Oracle
 <img src="images/4.png"> 
 
 ## Database Previews
+<p>
 <img src="images/6.png " align = "left" width = 450> 
 <img src="images/5.png" align = "right" width = 450> 
+</p>
 
--------
 
-## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-Please make sure to update tests as appropriate.
