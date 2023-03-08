@@ -12,6 +12,9 @@ This is GUI based game made using Java,swing, SQL,NetBeans, Oracle 10g.
 ## Software Previews
 
 <img src="images/1.png"> 
+<img src="images/2.png"> 
+<img src="images/3.png"> 
+<img src="images/4.png"> 
 
 ## Requirements
 following tools are required :
