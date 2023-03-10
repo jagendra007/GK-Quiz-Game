@@ -33,22 +33,22 @@ public class score extends javax.swing.JFrame {
       try{
             Class.forName("oracle.jdbc.driver.OracleDriver");
 Connection con2=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","jagendra");
-String query = "select * from questions where qmode = " + "'" + mode + "'" ;
-System.out.println(query);
+String query = "select * from questions where qmode = " + "'" + mode + "'" ;      
+
 PreparedStatement stmt=con2.prepareStatement(query);
 
 
 ResultSet rs=stmt.executeQuery();   
           rs.next() ; 
-          ans1.setText(rs.getString(8));
+          ans1.setText("1. " + rs.getString(8));
           rs.next();
-           ans2.setText(rs.getString(8));
+          ans2.setText("2. " +rs.getString(8));
           rs.next();
-           ans3.setText(rs.getString(8));
+           ans3.setText("3. " +rs.getString(8));
           rs.next();
-           ans4.setText(rs.getString(8));
+           ans4.setText("4. " +rs.getString(8));
           rs.next();
-          ans5.setText(rs.getString(8));
+          ans5.setText("5. " +rs.getString(8));
           
           con2.close();
       }catch(Exception e)
@@ -74,6 +74,8 @@ ResultSet rs=stmt.executeQuery();
         userName = new javax.swing.JLabel();
         uName = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         ans1 = new javax.swing.JLabel();
@@ -83,6 +85,7 @@ ResultSet rs=stmt.executeQuery();
         ans5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(300, 50));
 
         jLabel1.setFont(new java.awt.Font("STXinwei", 0, 24)); // NOI18N
         jLabel1.setText("   Score Board");
@@ -116,10 +119,28 @@ ResultSet rs=stmt.executeQuery();
         jLabel2.setText("Mode : ");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 131, 48));
 
+        jButton1.setFont(new java.awt.Font("STXinwei", 0, 18)); // NOI18N
+        jButton1.setText("Replay");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, 100, -1));
+
+        jButton2.setFont(new java.awt.Font("STXinwei", 0, 18)); // NOI18N
+        jButton2.setText("Exit");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, 110, -1));
+
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
 
         jLabel3.setFont(new java.awt.Font("STXinwei", 0, 18)); // NOI18N
-        jLabel3.setText("Answers");
+        jLabel3.setText("Correct Answers");
 
         ans1.setFont(new java.awt.Font("STXinwei", 0, 14)); // NOI18N
         ans1.setText("jLabel5");
@@ -143,13 +164,16 @@ ResultSet rs=stmt.executeQuery();
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(60, 60, 60)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(ans1, javax.swing.GroupLayout.DEFAULT_SIZE, 91, Short.MAX_VALUE)
+                    .addComponent(ans1, javax.swing.GroupLayout.DEFAULT_SIZE, 128, Short.MAX_VALUE)
                     .addComponent(ans2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(ans3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(ans4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ans5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel3))
-                .addContainerGap(35, Short.MAX_VALUE))
+                    .addComponent(ans5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(34, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addGap(32, 32, 32))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -160,7 +184,7 @@ ResultSet rs=stmt.executeQuery();
                 .addComponent(ans1)
                 .addGap(18, 18, 18)
                 .addComponent(ans2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
                 .addComponent(ans3)
                 .addGap(18, 18, 18)
                 .addComponent(ans4, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -183,7 +207,7 @@ ResultSet rs=stmt.executeQuery();
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -199,6 +223,16 @@ ResultSet rs=stmt.executeQuery();
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+         this.dispose();        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+              login log = new login();
+              log.setVisible(true);
+               this.dispose();// TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -241,6 +275,8 @@ ResultSet rs=stmt.executeQuery();
     private javax.swing.JLabel ans3;
     private javax.swing.JLabel ans4;
     private javax.swing.JLabel ans5;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

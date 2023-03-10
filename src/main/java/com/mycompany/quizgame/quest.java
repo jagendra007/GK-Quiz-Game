@@ -18,7 +18,7 @@ public class quest extends javax.swing.JFrame {
      * Creates new form quest
      */
     public  ResultSet rs;
-    static int qno = 1;
+    int qno = 1;
     public static String userName ;
     static String mode;
     public int score = 0;
@@ -61,6 +61,7 @@ public class quest extends javax.swing.JFrame {
         srno = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(300, 150));
 
         question.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         question.setText("jLabel1");
@@ -160,7 +161,7 @@ try{
             if (button.isSelected()) {
                 if(button.getText().equals(rs.getString(8))) {
                 this.score++;
-             selected = true;
+           
                 }
               
                         this.display(); 

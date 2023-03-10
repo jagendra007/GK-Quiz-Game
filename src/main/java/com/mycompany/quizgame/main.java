@@ -18,11 +18,17 @@ public class main extends javax.swing.JFrame {
     public static String userName;
     public static String mode;
     public int score = 0;
-    
+    Connection con ;
       public main(String userName) {
           this.userName = userName;
            System.out.print(userName);
            initComponents();
+       try{    Class.forName("oracle.jdbc.driver.OracleDriver");
+               this.con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","jagendra");
+               }catch(Exception e)
+{
+JOptionPane.showMessageDialog(this, e);
+}
     }
     
     public main() {
@@ -44,6 +50,7 @@ public class main extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setLocation(new java.awt.Point(400, 150));
 
         easy.setFont(new java.awt.Font("STXinwei", 0, 24)); // NOI18N
         easy.setText("Easy");
@@ -83,9 +90,9 @@ public class main extends javax.swing.JFrame {
                 .addGap(113, 113, 113)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(easy, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(medium, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(hard, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(easy, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(medium, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(hard, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(126, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -93,13 +100,13 @@ public class main extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
+                .addGap(37, 37, 37)
                 .addComponent(easy, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
+                .addGap(32, 32, 32)
                 .addComponent(medium, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
+                .addGap(31, 31, 31)
                 .addComponent(hard, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(44, Short.MAX_VALUE))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         pack();
@@ -109,13 +116,12 @@ public class main extends javax.swing.JFrame {
     
 try
 {
-Class.forName("oracle.jdbc.driver.OracleDriver");
-Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","jagendra");
+
 PreparedStatement stmt=con.prepareStatement("select * from questions where qmode = 'Easy' ");
 
 ResultSet rs=stmt.executeQuery();
 
-
+        
         this.mode="Easy";
        quest q = new quest(rs,this.userName,this.mode);
        
@@ -137,8 +143,7 @@ JOptionPane.showMessageDialog(this, e);
     private void mediumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mediumActionPerformed
  try
 {
-Class.forName("oracle.jdbc.driver.OracleDriver");
-Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","jagendra");
+
 PreparedStatement stmt=con.prepareStatement("select * from questions where qmode = 'Medium' ");
 
 ResultSet rs=stmt.executeQuery();
@@ -163,8 +168,7 @@ JOptionPane.showMessageDialog(this, e);
     private void hardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hardActionPerformed
 try
 {
-Class.forName("oracle.jdbc.driver.OracleDriver");
-Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","jagendra");
+
 PreparedStatement stmt=con.prepareStatement("select * from questions where qmode = 'Hard' ");
 
 ResultSet rs=stmt.executeQuery();
