@@ -29,7 +29,16 @@ public class score extends javax.swing.JFrame {
         uScore.setText(Integer.toString(score));
       uName.setText(userName);
       umode.setText(mode);
+      String arr[] = {"Poor", "Bad", "Good", "Strong", "Very Strong"};
+      if(score>0){
+          perf.setText(arr[score-1]);
+      }
+      else{
       
+         perf.setText("Learn From KG again");
+      }
+      
+     
       try{
             Class.forName("oracle.jdbc.driver.OracleDriver");
 Connection con2=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","jagendra");
@@ -76,6 +85,8 @@ ResultSet rs=stmt.executeQuery();
         jLabel2 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        perf = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         ans1 = new javax.swing.JLabel();
@@ -97,15 +108,15 @@ ResultSet rs=stmt.executeQuery();
 
         umode.setFont(new java.awt.Font("STXinwei", 1, 18)); // NOI18N
         umode.setText("jLabel3");
-        jPanel1.add(umode, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 90, 202, 50));
+        jPanel1.add(umode, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 90, 160, 50));
 
         jLabel4.setFont(new java.awt.Font("STXinwei", 0, 18)); // NOI18N
         jLabel4.setText("Score:");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, 72, 44));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 140, 72, 44));
 
         uScore.setFont(new java.awt.Font("STXinwei", 1, 18)); // NOI18N
         uScore.setText("jLabel5");
-        jPanel1.add(uScore, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 140, 194, 51));
+        jPanel1.add(uScore, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 140, 150, 51));
 
         userName.setFont(new java.awt.Font("STXinwei", 0, 18)); // NOI18N
         userName.setText("User Name :");
@@ -113,7 +124,7 @@ ResultSet rs=stmt.executeQuery();
 
         uName.setFont(new java.awt.Font("STXinwei", 1, 18)); // NOI18N
         uName.setText("jLabel2");
-        jPanel1.add(uName, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 30, 210, 59));
+        jPanel1.add(uName, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 30, 150, 59));
 
         jLabel2.setFont(new java.awt.Font("STXinwei", 0, 18)); // NOI18N
         jLabel2.setText("Mode : ");
@@ -126,7 +137,7 @@ ResultSet rs=stmt.executeQuery();
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, 100, -1));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, 100, -1));
 
         jButton2.setFont(new java.awt.Font("STXinwei", 0, 18)); // NOI18N
         jButton2.setText("Exit");
@@ -135,7 +146,15 @@ ResultSet rs=stmt.executeQuery();
                 jButton2ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 220, 110, -1));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 230, 110, -1));
+
+        jLabel5.setFont(new java.awt.Font("STXinwei", 0, 18)); // NOI18N
+        jLabel5.setText("Performance:");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, -1, -1));
+
+        perf.setFont(new java.awt.Font("STXinwei", 1, 18)); // NOI18N
+        perf.setText("jLabel6");
+        jPanel1.add(perf, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 190, 70, 20));
 
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
 
@@ -281,8 +300,10 @@ ResultSet rs=stmt.executeQuery();
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel perf;
     private javax.swing.JLabel uName;
     private javax.swing.JLabel uScore;
     private javax.swing.JLabel umode;

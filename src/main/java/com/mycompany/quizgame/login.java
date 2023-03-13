@@ -49,6 +49,11 @@ public class login extends javax.swing.JFrame {
                 userInActionPerformed(evt);
             }
         });
+        userIn.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                userInKeyPressed(evt);
+            }
+        });
 
         jButton1.setFont(new java.awt.Font("STXinwei", 0, 24)); // NOI18N
         jButton1.setText("Start");
@@ -117,6 +122,21 @@ public class login extends javax.swing.JFrame {
           else{
           JOptionPane.showMessageDialog(this, "Enter Valid User Name");}
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void userInKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_userInKeyPressed
+               if (evt.getKeyCode()==java.awt.event.KeyEvent.VK_ENTER){
+                   String userName =    userIn.getText();  
+         // TODO add your handling code here:
+          if(userName.length() > 1){
+               main m = new main(userName);
+              
+             m.setVisible(true);
+             this.dispose();
+          }
+          else{
+          JOptionPane.showMessageDialog(this, "Enter Valid User Name");} 
+               }        // TODO add your handling code here:
+    }//GEN-LAST:event_userInKeyPressed
 
     /**
      * @param args the command line arguments
